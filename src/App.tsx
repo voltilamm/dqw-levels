@@ -1,9 +1,5 @@
-function App() {
-  return (
-    <div>
-      <h1>Hello, World!</h1>
-    </div>
-  );
-}
+import { LevelPage } from "@/pages/LevelPage";
 
-export default App;
+export function App() {
+  return <LevelPage />;
+}
