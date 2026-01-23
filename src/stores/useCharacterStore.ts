@@ -1,11 +1,10 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { Character, Job } from "@/types/character";
+import type { Character } from "@/types/character";
 import { JOBS } from "@/types/character";
 
 type CharacterStore = {
   characters: [Character, Character, Character, Character];
-  jobs: Job[];
   updateCharacterName: (index: number, name: string) => void;
   updateLevel: (charIndex: number, jobId: string, level: number) => void;
 };
@@ -15,23 +14,38 @@ export const useCharacterStore = create<CharacterStore>()(
     (set) => ({
       characters: [
         {
+          id: 1,
           name: "",
-          levels: JOBS.map((job) => ({ jobId: job.id, level: 1 })),
+          levels: JOBS.map((job) => ({
+            jobId: job.id,
+            level: job.category === "basic" ? 1 : 0,
+          })),
         },
         {
+          id: 2,
           name: "",
-          levels: JOBS.map((job) => ({ jobId: job.id, level: 1 })),
+          levels: JOBS.map((job) => ({
+            jobId: job.id,
+            level: job.category === "basic" ? 1 : 0,
+          })),
         },
         {
+          id: 3,
           name: "",
-          levels: JOBS.map((job) => ({ jobId: job.id, level: 1 })),
+          levels: JOBS.map((job) => ({
+            jobId: job.id,
+            level: job.category === "basic" ? 1 : 0,
+          })),
         },
         {
+          id: 4,
           name: "",
-          levels: JOBS.map((job) => ({ jobId: job.id, level: 1 })),
+          levels: JOBS.map((job) => ({
+            jobId: job.id,
+            level: job.category === "basic" ? 1 : 0,
+          })),
         },
       ],
-      jobs: JOBS,
       updateCharacterName: (index, name) =>
         set((state) => {
           const newCharacters = [...state.characters] as [

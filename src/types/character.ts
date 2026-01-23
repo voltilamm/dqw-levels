@@ -13,6 +13,7 @@ export type CharacterLevel = {
 };
 
 export type Character = {
+  id: number;
   name: string;
   levels: CharacterLevel[];
 };
