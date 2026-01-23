@@ -4,14 +4,14 @@ import { JobLevelList } from "./JobLevelList";
 import styles from "./CharacterColumn.module.css";
 
 type CharacterColumnProps = {
-  charIndex: number;
+  characterId: number;
 };
 
-export const CharacterColumn = memo(({ charIndex }: CharacterColumnProps) => {
+export const CharacterColumn = memo(({ characterId }: CharacterColumnProps) => {
   return (
     <div className={styles.characterColumn}>
-      <CharacterNameCell charIndex={charIndex} />
-      <JobLevelList charIndex={charIndex} />
+      <CharacterNameCell characterId={characterId} />
+      <JobLevelList characterId={characterId} />
     </div>
   );
 });

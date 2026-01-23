@@ -8,8 +8,8 @@ export function LevelPage() {
   return (
     <div className={styles.container}>
       <div className={styles.charactersGrid}>
-        {characters.map((character, charIndex) => (
-          <CharacterColumn key={character.id} charIndex={charIndex} />
+        {characters.map((character) => (
+          <CharacterColumn key={character.id} characterId={character.id} />
         ))}
       </div>
     </div>

@@ -1,13 +1,13 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
-import type { Character, CharacterLevel } from "@/types/character";
+import type { Character } from "@/types/character";
 import { JOBS } from "@/types/character";
 
 type CharacterStore = {
   characters: [Character, Character, Character, Character];
-  updateCharacterName: (index: number, name: string) => void;
-  updateLevel: (charIndex: number, jobId: string, level: number) => void;
+  updateCharacterName: (id: number, name: string) => void;
+  updateLevel: (characterId: number, jobId: string, level: number) => void;
 };
 
 export const useCharacterStore = create<CharacterStore>()(
@@ -48,17 +48,23 @@ export const useCharacterStore = create<CharacterStore>()(
             })),
           },
         ],
-        updateCharacterName: (index, name) =>
+        updateCharacterName: (id, name) =>
           set((state) => {
-            state.characters[index].name = name;
+            const character = state.characters.find((c) => c.id === id);
+            if (character) {
+              character.name = name;
+            }
           }),
-        updateLevel: (charIndex, jobId, level) =>
+        updateLevel: (characterId, jobId, level) =>
           set((state) => {
-            const levelData = state.characters[charIndex].levels.find(
-              (l: CharacterLevel) => l.jobId === jobId,
+            const character = state.characters.find(
+              (c) => c.id === characterId,
             );
-            if (levelData) {
-              levelData.level = level;
+            if (character) {
+              const levelData = character.levels.find((l) => l.jobId === jobId);
+              if (levelData) {
+                levelData.level = level;
+              }
             }
           }),
       }),

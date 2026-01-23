@@ -4,17 +4,13 @@ import { useSettingsStore } from "@/stores/useSettingsStore";
 import { JobLevelCell } from "./JobLevelCell";
 
 type JobLevelListProps = {
-  charIndex: number;
+  characterId: number;
 };
 
-export const JobLevelList = memo(({ charIndex }: JobLevelListProps) => {
-  const { showBasicJobs, showAdvancedJobs, showSpecialJobs } = useSettingsStore(
-    (state) => ({
-      showBasicJobs: state.showBasicJobs,
-      showAdvancedJobs: state.showAdvancedJobs,
-      showSpecialJobs: state.showSpecialJobs,
-    }),
-  );
+export const JobLevelList = memo(({ characterId }: JobLevelListProps) => {
+  const showBasicJobs = useSettingsStore((state) => state.showBasicJobs);
+  const showAdvancedJobs = useSettingsStore((state) => state.showAdvancedJobs);
+  const showSpecialJobs = useSettingsStore((state) => state.showSpecialJobs);
 
   const categoryFilter = {
     basic: showBasicJobs,
@@ -27,7 +23,7 @@ export const JobLevelList = memo(({ charIndex }: JobLevelListProps) => {
   return (
     <>
       {filteredJobs.map((job) => (
-        <JobLevelCell key={job.id} charIndex={charIndex} jobId={job.id} />
+        <JobLevelCell key={job.id} characterId={characterId} jobId={job.id} />
       ))}
     </>
   );

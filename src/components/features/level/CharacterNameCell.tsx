@@ -1,14 +1,20 @@
-import { memo } from "react";
+import { memo, useCallback } from "react";
 import { useCharacterStore } from "@/stores/useCharacterStore";
 import { CharacterNameInput } from "./CharacterNameInput";
 
 type CharacterNameCellProps = {
-  charIndex: number;
+  characterId: number;
 };
 
 export const CharacterNameCell = memo(
-  ({ charIndex }: CharacterNameCellProps) => {
-    const name = useCharacterStore((state) => state.characters[charIndex].name);
+  ({ characterId }: CharacterNameCellProps) => {
+    const name = useCharacterStore(
+      useCallback(
+        (state) =>
+          state.characters.find((c) => c.id === characterId)?.name ?? "",
+        [characterId],
+      ),
+    );
     const updateCharacterName = useCharacterStore(
       (state) => state.updateCharacterName,
     );
@@ -16,7 +22,7 @@ export const CharacterNameCell = memo(
     return (
       <CharacterNameInput
         value={name}
-        onChange={(n) => updateCharacterName(charIndex, n)}
+        onChange={(n) => updateCharacterName(characterId, n)}
       />
     );
   },
