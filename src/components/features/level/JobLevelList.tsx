@@ -8,17 +8,11 @@ type JobLevelListProps = {
 };
 
 export const JobLevelList = memo(({ characterId }: JobLevelListProps) => {
-  const showBasicJobs = useSettingsStore((state) => state.showBasicJobs);
-  const showAdvancedJobs = useSettingsStore((state) => state.showAdvancedJobs);
-  const showSpecialJobs = useSettingsStore((state) => state.showSpecialJobs);
+  const visibleCategories = useSettingsStore(
+    (state) => state.visibleCategories,
+  );
 
-  const categoryFilter = {
-    basic: showBasicJobs,
-    advanced: showAdvancedJobs,
-    special: showSpecialJobs,
-  };
-
-  const filteredJobs = JOBS.filter((job) => categoryFilter[job.category]);
+  const filteredJobs = JOBS.filter((job) => visibleCategories[job.category]);
 
   return (
     <>
@@ -28,3 +22,5 @@ export const JobLevelList = memo(({ characterId }: JobLevelListProps) => {
     </>
   );
 });
+
+JobLevelList.displayName = "JobLevelList";

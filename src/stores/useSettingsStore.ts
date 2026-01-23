@@ -1,27 +1,27 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import type { JobCategory } from "@/types/character";
 
 type SettingsStore = {
-  showBasicJobs: boolean;
-  showAdvancedJobs: boolean;
-  showSpecialJobs: boolean;
-  toggleBasicJobs: () => void;
-  toggleAdvancedJobs: () => void;
-  toggleSpecialJobs: () => void;
+  visibleCategories: Record<JobCategory, boolean>;
+  toggleCategory: (category: JobCategory) => void;
 };
 
 export const useSettingsStore = create<SettingsStore>()(
   persist(
     (set) => ({
-      showBasicJobs: true,
-      showAdvancedJobs: true,
-      showSpecialJobs: true,
-      toggleBasicJobs: () =>
-        set((state) => ({ showBasicJobs: !state.showBasicJobs })),
-      toggleAdvancedJobs: () =>
-        set((state) => ({ showAdvancedJobs: !state.showAdvancedJobs })),
-      toggleSpecialJobs: () =>
-        set((state) => ({ showSpecialJobs: !state.showSpecialJobs })),
+      visibleCategories: {
+        basic: true,
+        advanced: true,
+        special: true,
+      },
+      toggleCategory: (category) =>
+        set((state) => ({
+          visibleCategories: {
+            ...state.visibleCategories,
+            [category]: !state.visibleCategories[category],
+          },
+        })),
     }),
     {
       name: "dqw-levels-settings",
