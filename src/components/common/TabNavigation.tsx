@@ -15,7 +15,7 @@ export function TabNavigation({ activeTab, onTabChange }: TabNavigationProps) {
         className={`${styles.tab} ${activeTab === "levels" ? styles.active : ""}`}
         onClick={() => onTabChange("levels")}
       >
-        レベル管理
+        レベル表
       </button>
       <button
         type="button"
