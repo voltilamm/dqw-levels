@@ -1,6 +1,7 @@
 import { useState, useTransition } from "react";
 import { LevelPage } from "./pages/LevelPage";
 import { SettingsPage } from "./pages/SettingsPage";
+import { AppHeader } from "./components/common/AppHeader";
 import { TabNavigation } from "./components/common/TabNavigation";
 import { LoadingSpinner } from "./components/common/LoadingSpinner";
 import "./App.css";
@@ -19,6 +20,7 @@ export function App() {
 
   return (
     <div className="app">
+      <AppHeader />
       <main className="main">
         {isPending && <LoadingSpinner />}
         <div
