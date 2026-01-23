@@ -1,11 +1,16 @@
 .input {
   width: 100%;
-  padding: 0.25rem;
-  height: 1.75rem;
+  height: 2rem;
+  padding: 0.5rem;
   border: 2px solid #8ac0ba;
   border-radius: 4px;
   font-size: 1rem;
   text-align: center;
+  font-weight: 500;
+  font-family:
+    "Hiragino Maru Gothic ProN", "ヒラギノ丸ゴ ProN", "Rounded Mplus 1c",
+    "M PLUS Rounded 1c", -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #333;
 }
 
 .input:focus {
