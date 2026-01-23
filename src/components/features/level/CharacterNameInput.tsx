@@ -1,18 +1,21 @@
-import type { UseFormRegisterReturn } from "react-hook-form";
-
 import styles from "./CharacterNameInput.module.css";
 
 interface CharacterNameInputProps {
-  register: UseFormRegisterReturn;
+  value: string;
+  onChange: (value: string) => void;
 }
 
-export function CharacterNameInput({ register }: CharacterNameInputProps) {
+export function CharacterNameInput({
+  value,
+  onChange,
+}: CharacterNameInputProps) {
   return (
     <input
-      className={styles.input}
       type="text"
       placeholder="名前"
-      {...register}
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      className={styles.input}
     />
   );
 }
