@@ -15,14 +15,13 @@
 }
 
 .jobName[data-category="basic"] {
-  background-color: #ff6b6b;
+  background-color: #e74c3c; /* やや明るい赤 */
 }
 
 .jobName[data-category="advanced"] {
-  background-color: #4ecdc4;
+  background-color: #3498db; /* やや明るい青 */
 }
 
 .jobName[data-category="special"] {
-  background-color: #ffe66d;
-  color: #333;
+  background-color: #9b59b6; /* やや明るい紫 */
 }
