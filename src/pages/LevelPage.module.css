@@ -7,36 +7,3 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 0.5rem;
 }
-
-.characterColumn {
-  display: flex;
-  flex-direction: column;
-  gap: 0.375rem;
-}
-
-.jobRow {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.25rem;
-  align-items: center;
-}
-
-.jobName {
-  padding: 0.0625rem 0.25rem;
-  font-weight: bold;
-  text-align: center;
-  border-radius: 4px;
-  color: white;
-}
-
-.jobName[data-category="basic"] {
-  background-color: #ff6b6b;
-}
-
-.jobName[data-category="advanced"] {
-  background-color: #4ecdc4;
-}
-
-.jobName[data-category="special"] {
-  background-color: #ffe66d;
-}

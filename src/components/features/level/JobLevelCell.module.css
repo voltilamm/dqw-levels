@@ -1,0 +1,28 @@
+.jobRow {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.jobName {
+  height: 1.5rem;
+  width: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 6px;
+  color: white;
+}
+
+.jobName[data-category="basic"] {
+  background-color: #ff6b6b;
+}
+
+.jobName[data-category="advanced"] {
+  background-color: #4ecdc4;
+}
+
+.jobName[data-category="special"] {
+  background-color: #ffe66d;
+  color: #333;
+}

@@ -1,10 +1,9 @@
 .input {
   width: 100%;
-  padding: 0.125rem;
+  height: 1.5rem;
   border: 2px solid #8ac0ba;
-  border-radius: 6px;
+  border-radius: 4px;
   font-size: 1rem;
-  text-align: center;
   background-color: white;
   cursor: pointer;
 }
