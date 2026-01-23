@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
-import type { Character } from "@/types/character";
+import type { Character, CharacterLevel } from "@/types/character";
 import { JOBS } from "@/types/character";
 
 type CharacterStore = {
@@ -55,7 +55,7 @@ export const useCharacterStore = create<CharacterStore>()(
         updateLevel: (charIndex, jobId, level) =>
           set((state) => {
             const levelData = state.characters[charIndex].levels.find(
-              (l) => l.jobId === jobId,
+              (l: CharacterLevel) => l.jobId === jobId,
             );
             if (levelData) {
               levelData.level = level;
