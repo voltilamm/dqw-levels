@@ -63,7 +63,7 @@ export const useCharacterStore = create<CharacterStore>()(
           }),
       }),
       {
-        name: "dqw-levels",
+        name: "dqw-levels-characters",
       },
     ),
   ),
