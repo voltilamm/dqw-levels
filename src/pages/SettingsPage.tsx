@@ -16,7 +16,7 @@ export function SettingsPage() {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>表示設定</h2>
+      <h3 className={styles.title}>表示設定</h3>
       <div className={styles.section}>
         {JOB_CATEGORIES.map((category) => (
           <label key={category} className={styles.checkboxLabel}>
