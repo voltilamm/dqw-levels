@@ -39,7 +39,11 @@ export function StatisticsPage() {
         <h3>全職カンストまでの必要経験値</h3>
         {characters.map((character) => (
           <div key={character.id} className={styles.item}>
-            <span>{character.name}</span>
+            <span>
+              {character.name && character.name.trim().length > 0
+                ? character.name
+                : `キャラ${characters.indexOf(character) + 1}`}
+            </span>
             <span className={styles.expValue}>
               {remainingExpMap[character.id].toLocaleString()} exp
             </span>

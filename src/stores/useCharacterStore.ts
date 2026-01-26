@@ -17,7 +17,7 @@ export const useCharacterStore = create<CharacterStore>()(
         characters: [
           {
             id: 1,
-            name: "",
+            name: "キャラ1",
             levels: JOBS.map((job) => ({
               jobId: job.id,
               level: job.category === "basic" ? 1 : 0,
@@ -25,7 +25,7 @@ export const useCharacterStore = create<CharacterStore>()(
           },
           {
             id: 2,
-            name: "",
+            name: "キャラ2",
             levels: JOBS.map((job) => ({
               jobId: job.id,
               level: job.category === "basic" ? 1 : 0,
@@ -33,7 +33,7 @@ export const useCharacterStore = create<CharacterStore>()(
           },
           {
             id: 3,
-            name: "",
+            name: "キャラ3",
             levels: JOBS.map((job) => ({
               jobId: job.id,
               level: job.category === "basic" ? 1 : 0,
@@ -41,7 +41,7 @@ export const useCharacterStore = create<CharacterStore>()(
           },
           {
             id: 4,
-            name: "",
+            name: "キャラ4",
             levels: JOBS.map((job) => ({
               jobId: job.id,
               level: job.category === "basic" ? 1 : 0,
