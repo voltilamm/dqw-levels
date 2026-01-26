@@ -1,4 +1,9 @@
-import { JOBS, JOB_MAX_LEVELS, type Character } from "@/types/character";
+import {
+  JOBS,
+  JOB_MAX_LEVELS,
+  type Character,
+  type JobCategory,
+} from "@/types/character";
 import {
   advancedExpMap,
   basicExpMap,
@@ -15,16 +20,19 @@ const expMapByCategory: Record<string, Map<number, number>> = {
   special: specialExpMap,
 };
 
-export function calcCharacterRemainingExp(character: Character): number {
-  return JOBS.reduce((sum, job) => {
-    const expMap = expMapByCategory[job.category];
-    if (!expMap) return sum;
+export function calcCharacterRemainingExpByCategory(
+  character: Character,
+  category: JobCategory,
+): number {
+  const categoryJobs = JOBS.filter((job) => job.category === category);
+  const maxLevel = JOB_MAX_LEVELS[category];
+  const expMap = expMapByCategory[category];
 
-    const maxLevel = JOB_MAX_LEVELS[job.category];
-    const maxTotal = expMap.get(maxLevel) ?? 0;
-
+  return categoryJobs.reduce((sum, job) => {
     const levelData = character.levels.find((l) => l.jobId === job.id);
-    const currentLevel = levelData?.level ?? 1;
+    const currentLevel = levelData?.level ?? (category === "basic" ? 1 : 0);
+
+    const maxTotal = expMap.get(maxLevel) ?? 0;
     const currentTotal = expMap.get(currentLevel) ?? 0;
 
     return sum + (maxTotal - currentTotal);
@@ -33,12 +41,30 @@ export function calcCharacterRemainingExp(character: Character): number {
 
 export function calcAllCharactersRemainingExp(
   characters: Character[],
-): Record<number, number> {
+): Record<
+  number,
+  { basic: number; advanced: number; special: number; total: number }
+> {
   return characters.reduce(
     (acc, character) => {
-      acc[character.id] = calcCharacterRemainingExp(character);
+      const basic = calcCharacterRemainingExpByCategory(character, "basic");
+      const advanced = calcCharacterRemainingExpByCategory(
+        character,
+        "advanced",
+      );
+      const special = calcCharacterRemainingExpByCategory(character, "special");
+
+      acc[character.id] = {
+        basic,
+        advanced,
+        special,
+        total: basic + advanced + special,
+      };
       return acc;
     },
-    {} as Record<number, number>,
+    {} as Record<
+      number,
+      { basic: number; advanced: number; special: number; total: number }
+    >,
   );
 }
