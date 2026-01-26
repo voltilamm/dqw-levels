@@ -15,6 +15,7 @@ export function App() {
   const [isPending, startTransition] = useTransition();
 
   const handleTabChange = (tab: Tab) => {
+    if (tab === activeTab) return;
     startTransition(() => {
       setActiveTab(tab);
     });
