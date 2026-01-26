@@ -6,8 +6,9 @@ import { AppHeader } from "./components/common/AppHeader";
 import { TabNavigation } from "./components/common/TabNavigation";
 import { LoadingSpinner } from "./components/common/LoadingSpinner";
 import "./App.css";
+import { AboutPage } from "./pages/AboutPage";
 
-type Tab = "levels" | "statistics" | "settings";
+type Tab = "levels" | "statistics" | "settings" | "about";
 
 export function App() {
   const [activeTab, setActiveTab] = useState<Tab>("levels");
@@ -37,6 +38,11 @@ export function App() {
         {activeTab === "settings" && (
           <div className="pageContainer">
             <SettingsPage />
+          </div>
+        )}
+        {activeTab === "about" && (
+          <div className="pageContainer">
+            <AboutPage />
           </div>
         )}
       </main>

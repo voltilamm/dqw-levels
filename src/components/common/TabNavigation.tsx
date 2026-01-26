@@ -1,6 +1,6 @@
 import styles from "./TabNavigation.module.css";
 
-type Tab = "levels" | "statistics" | "settings";
+type Tab = "levels" | "statistics" | "settings" | "about";
 
 type TabNavigationProps = {
   activeTab: Tab;
@@ -30,6 +30,13 @@ export function TabNavigation({ activeTab, onTabChange }: TabNavigationProps) {
         onClick={() => onTabChange("settings")}
       >
         設定
+      </button>
+      <button
+        type="button"
+        className={`${styles.tab} ${activeTab === "about" ? styles.active : ""}`}
+        onClick={() => onTabChange("about")}
+      >
+        About
       </button>
     </nav>
   );
