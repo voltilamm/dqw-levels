@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.section h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.expValue {
+  color: #2c7a7b;
+  font-variant-numeric: tabular-nums;
+}
