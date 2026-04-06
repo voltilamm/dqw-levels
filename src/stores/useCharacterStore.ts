@@ -70,6 +70,21 @@ export const useCharacterStore = create<CharacterStore>()(
       }),
       {
         name: "dqw-levels-characters",
+        migrate: (persistedState) => {
+          const state = persistedState as { characters: Character[] };
+          const jobMap = new Map(JOBS.map((j) => [j.id, j]));
+          state.characters.forEach((character) => {
+            jobMap.forEach((job, jobId) => {
+              if (!character.levels.some((l) => l.jobId === jobId)) {
+                character.levels.push({
+                  jobId,
+                  level: job.category === "basic" ? 1 : 0,
+                });
+              }
+            });
+          });
+          return state;
+        },
       },
     ),
   ),
