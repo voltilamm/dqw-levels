@@ -53,4 +53,5 @@ export const JOBS: Job[] = [
   { id: "22", name: "ド", longName: "ドラゴン", category: "special" },
   { id: "23", name: "天", longName: "天地雷鳴士", category: "special" },
   { id: "24", name: "マ", longName: "魔人", category: "special" },
+  { id: "25", name: "時", longName: "時渡りの剣士", category: "special" },
 ];
