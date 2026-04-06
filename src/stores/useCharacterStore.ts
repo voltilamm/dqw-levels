@@ -70,6 +70,7 @@ export const useCharacterStore = create<CharacterStore>()(
       }),
       {
         name: "dqw-levels-characters",
+        version: 1,
         migrate: (persistedState) => {
           const state = persistedState as { characters: Character[] };
           const jobMap = new Map(JOBS.map((j) => [j.id, j]));
